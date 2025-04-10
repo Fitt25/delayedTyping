@@ -1,0 +1,33 @@
+<input class = "input" type="text">
+<button class="start">Start</button>
+<h1 class="result"></h1>
+<div class="display"></div>
+
+<script>   
+    const input = document.querySelector(".input")
+    const button = document.querySelector(".start")
+    const h1 = document.querySelector(".result")
+    const div = document.querySelector(".display")
+
+    const delayedTyping = (word, index = 0, result = "") => {
+        if(index == word.length){
+            h1.innerText = ""
+            div.innerHTML = `<h1>${result}</h1>${div.innerHTML}`
+            return
+        }
+        console.log(result)
+        result += word[index]
+        setTimeout(()=>{
+            h1.innerText = result
+            delayedTyping(word, index+1, result)
+        },200)
+
+    }
+
+    button.onclick=()=>{
+        delayedTyping(input.value)
+        input.value = ""
+    }
+
+</script>
+
